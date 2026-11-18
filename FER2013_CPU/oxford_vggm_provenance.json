@@ -1,0 +1,23 @@
+{
+  "artifact": "oxford_vggm.pth",
+  "bytes": 395527376,
+  "sha256": "c02d3dbba3a2808b319665c6bcd33d4a7d564ae4e1cf0ccfd2ab8931513c198a",
+  "checkpoint_url": "https://www.robots.ox.ac.uk/~albanie/models/pytorch-mcn/vgg_m_face_bn_fer_dag.pth",
+  "architecture_url": "https://www.robots.ox.ac.uk/~albanie/models/pytorch-mcn/vgg_m_face_bn_fer_dag.py",
+  "architecture_sha256": "62e09655929327fb7a6e08e935860900f6f18d63da1724b9ed7570853738679d",
+  "release_page": "https://www.robots.ox.ac.uk/~albanie/pytorch-models.html",
+  "benchmark_source_url": "https://github.com/albanie/pytorch-benchmarks/tree/081e82eb43439ce2821622a6e3d627877caed67a",
+  "paper_url": "https://arxiv.org/abs/1610.02255",
+  "training_split": "FER2013 Training and VGG-Faces pretraining, as documented in the publisher checkpoint table",
+  "model_selection_split": "The publisher benchmark defines PublicTest as validation. Historical checkpoint selection details are unavailable.",
+  "publisher_reporting_split": "FER2013 PublicTest validation and PrivateTest test using original labels",
+  "class_order": ["angry", "disgust", "fear", "happy", "sad", "surprise", "neutral"],
+  "preprocessing": "PIL bilinear resize of the 48x48 grayscale crop to 224x224, replication to RGB, and subtraction of [131.45376586914062, 103.98748016357422, 91.46234893798828] from the corresponding channels in [0,255] units. The normalization standard deviations are all 1.",
+  "inference": "Original Oxford model with strictly loaded checkpoint, evaluation mode, CPU FP32, fold seven Conv-BatchNorm pairs, channels-last layout, batch size 48, and one PyTorch CPU thread.",
+  "fp32_reference_check": "The original unfused and adapted PyTorch implementations agreed on all 16 native-view top-1 classes checked on PublicTest. The maximum absolute logit difference was 1.48e-5.",
+  "views": ["original", "horizontal_reflection"],
+  "view_fusion": "Cache logits contain the arithmetic mean of both views. Individual view logits are stored separately.",
+  "cache_temperature_applied": false,
+  "redistribution": "The author offers both checkpoint and architecture as public downloads. No explicit redistribution license was identified for the checkpoint.",
+  "prediction_scope": "Inference reads source images, IDs and hashes. The pilot additionally uses the PublicTest clean mask. PrivateTest labels are never read by the prediction adapter."
+}

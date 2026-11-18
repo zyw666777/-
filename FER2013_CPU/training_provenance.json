@@ -1,0 +1,89 @@
+{
+  "RMN checkpoints": {
+    "url": "https://huggingface.co/phamquiluan/ResidualMaskingNetwork/tree/c33839f9aa9275b5b84dc42b2d614e1bfb3b752b/benchmarks",
+    "pinned_revision": "c33839f9aa9275b5b84dc42b2d614e1bfb3b752b",
+    "model_order": [
+      "angry",
+      "disgust",
+      "fear",
+      "happy",
+      "sad",
+      "surprise",
+      "neutral"
+    ],
+    "preprocessing": "cv2 bilinear resize, replicated grayscale, /255, model-specific preprocessing inside network",
+    "publisher_reported_test_accuracy": {
+      "densenet121": 0.7316801337419894,
+      "googlenet": 0.7196990805238228,
+      "resnet34": 0.7241571468375592,
+      "efficientnet_b2b": 0.7079966564502647,
+      "cbam_resnet50": 0.733909166899
+    },
+    "split_evidence": "Traditional three-folder CSV processing; checkpoint config says saved/data/fer2013, and separate best_val_acc/test_acc. Original examples use author's staged val/test files. Their example gen_results.py averages probabilities across eight random rotation/flip views on test. Source archive does not reconstruct exact original CSV files."
+  },
+  "Tyom SWSL ResNet18": {
+    "url": "https://github.com/TyomPapiyan/fer2013-emotion-scanner",
+    "parameter_file": "fer2013_emotion_resnet18_v2.pt",
+    "license": "MIT",
+    "architecture": "timm resnet18.fb_swsl_ig1b_ft_in1k",
+    "model_order": [
+      "angry",
+      "disgust",
+      "fear",
+      "happy",
+      "neutral",
+      "sad",
+      "surprise"
+    ],
+    "canonical_index_order": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      4
+    ],
+    "preprocessing": "48x48 grayscale float mapped via bilinear reflection grid to 112x112 RGB standardized by ImageNet mean/std",
+    "views": [
+      "original",
+      "horizontal flip",
+      "center zoom 1.1x",
+      "center zoom 1.1x with horizontal flip"
+    ],
+    "split_evidence": "The upstream training notebook loads msambare Kaggle train/ and test/ separately. Training array stays within train/, VAL_FRAC=0.0, preallocated time budget. Released weights contain metadata but no per-example training hash manifest. Publisher reported 72.36% on the combined 7178-image Kaggle test folder with 12 views. This experiment uses at most four.",
+    "revision": "dffd2628d872377b245f957202c06bbb7cb7e42d",
+    "sha256": "5b07a18e196bf8eaa5103babaeed36ace6cee136873ad915498f5dc3e57be364"
+  },
+  "excluded Stanford web checkpoint": {
+    "url": "https://github.com/amilkh/cs230-fer/blob/master/models/webapp.ipynb",
+    "reason": "Training pipeline unzips both FER2013 test-public.zip and test-private.zip into train/. The article's benchmark network weights are distributed separately; linked Google Drive folder returned 404."
+  },
+  "excluded tharinda-pamindu checkpoint": {
+    "url": "https://huggingface.co/tharinda-pamindu/Facial_Emotion_Detection_model_ft",
+    "reason": "Six classes, dropping disgust; 28,272/7,068 random split over combined data, incompatible with the official split"
+  },
+  "excluded WuJie1010 PrivateTest checkpoint": {
+    "url": "https://github.com/WuJie1010/Facial-Expression-Recognition.Pytorch/blob/master/mainpro_FER.py",
+    "reason": "Published training script saves checkpoints by best PrivateTest accuracy"
+  },
+  "CBAM ResNet50 CPU INT8": {
+    "original_source": "https://huggingface.co/phamquiluan/ResidualMaskingNetwork/resolve/c33839f9aa9275b5b84dc42b2d614e1bfb3b752b/benchmarks/cbam_resnet50",
+    "original_sha256": "70477ef7ce9566050ac82ca35eeffe3bca446ff4e1e7721e6524b5106b3a9947",
+    "local_model": "cbam_resnet50_224_int8.onnx",
+    "quantized_sha256": "524dc1bac0375570939a4d97741827b6211a3dee29528a249ad6929f76cf9821",
+    "conversion": "CPU ONNX Runtime static QDQ, unsigned 8-bit activations, signed 8-bit per-channel weights, Conv/Gemm/MatMul, opset 17",
+    "quantization_calibration": "48 samples from clean Training chosen with numpy default_rng(19731); calibration positions in cbam_resnet50_224_calibration_indices.npy",
+    "frozen_full_inference": "native 224 input, replicated grayscale after cv2 INTER_LINEAR resize, divide by 255, original and horizontal flip"
+  },
+  "DenseNet121 CPU INT8": {
+    "original_source": "https://huggingface.co/phamquiluan/ResidualMaskingNetwork/resolve/c33839f9aa9275b5b84dc42b2d614e1bfb3b752b/benchmarks/densenet121",
+    "original_sha256": "18a571a1a2ad137c23d7b32d22678d5d3b7a9e3edc4ad561384c15c12f6c54a8",
+    "local_model": "densenet121_224_int8.onnx",
+    "quantized_sha256": "9bc101d874041e1c3885bfd20a2b02ee67c4ddec896be464999e8cfff826610f",
+    "conversion": "CPU ONNX Runtime static QDQ, unsigned 8-bit activations, signed 8-bit per-channel weights, Conv/Gemm/MatMul, opset 17",
+    "quantization_calibration": "48 samples from clean Training chosen with numpy default_rng(19731); calibration positions in densenet121_224_calibration_indices.npy",
+    "quantization_choice_evidence": "Two-view on fixed n128 Public pilot: float 70.3125%, INT8 71.09375%; latency 37.2 s versus 26.1 s under shared CPU load.",
+    "frozen_full_inference": "native 224 input, replicated grayscale after cv2 INTER_LINEAR resize, divide by 255, original and horizontal flip"
+  }
+}

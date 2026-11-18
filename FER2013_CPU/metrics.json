@@ -1,0 +1,34 @@
+{
+  "accuracy": 0.7626079687935358,
+  "correct": 2737,
+  "samples": 3589,
+  "macro_f1": 0.7558943083218047,
+  "clean_accuracy": 0.7450381679389313,
+  "clean_samples": 3275,
+  "nll": 0.7278857789415716,
+  "split": "PrivateTest",
+  "test_data_sha256": "c4dafe7fdf2a62c7a29b7e1e1d2a0f620cb66fa85ae776d345484bae44e63ecc",
+  "frozen_policy_sha256": "d1a83cb49e1daf6119e8b07643b132dc061cd678fe721bb199246bc155f89f0f",
+  "prediction_input_hashes": {
+    "tyom": "3cc6f63f7d25a4835c98d74b54c9f4d651cb6d656c7446ba27c4d2d739085d03",
+    "oxford": "2e8f7426d1fd38215f6e91fb6a82db4d508d049f6dac578c35b2a9f0f104b41e",
+    "densenet": "4f213bfed680e9de88029299e70c2d91dafb3667473bfcc758124bf40e915730",
+    "rmn": "6d71955bb648ac63984ae50d6111cc1dd9bf4fffbaee6b477ed59e2cb495b8b5",
+    "affectlens_rehead": "43567fd5cab5e0b38d98e1098a1df19cda9410e475b1e5ba1d414a67fb760616",
+    "vggm": "e4ee968e83cd79d9ae65d6f053a36664a1e04a9fcc15e6d0eed0a89115006c60"
+  },
+  "data_arrays": {
+    "labels": {
+      "dtype": "<i8",
+      "sha256": "ea31048d16964f01db9fd2f0fc7ea227969ca5d7dd1871bb56e973a6012b42e9"
+    },
+    "clean_mask": {
+      "dtype": "|b1",
+      "sha256": "ffde2d3dcc3ae10ff385687721060bf3fc42db3d918108f1b30944cb123d31f0"
+    },
+    "hashes": {
+      "dtype": "<U64",
+      "sha256": "38e06b291136d2c1213ff626abaca714f61123c103d208dbfd1bcfec45522e28"
+    }
+  }
+}

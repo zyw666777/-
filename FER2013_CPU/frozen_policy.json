@@ -1,0 +1,54 @@
+{
+  "method": "equal",
+  "params": {
+    "temperatures": [
+      1.055366120671367,
+      3.039319491445479,
+      1.9509470542336478,
+      2.263503867856785,
+      1.8173124104322635,
+      2.883048020941036
+    ]
+  },
+  "development_set": "ac046034eb40418356523edca234a01e70d986f6fd42f1d74c51f3d5633f864b",
+  "models": [
+    {
+      "name": "tyom",
+      "views": 2,
+      "file": "/workspace/work/boost_candidates/tyom_resnet18_PublicTest_112_fp32_v4.npz"
+    },
+    {
+      "name": "oxford",
+      "file": "/workspace/work/boost_strategy/oxford_alexnet_PublicTest.npz"
+    },
+    {
+      "name": "densenet",
+      "file": "/workspace/work/boost_candidates/densenet121_PublicTest_224_int8_v2.npz"
+    },
+    {
+      "name": "rmn",
+      "file": "/workspace/work/boost/predictions/rmnskip1234_PublicTest_224_ieee_0_180_3589.npz"
+    },
+    {
+      "name": "affectlens_rehead",
+      "file": "/workspace/work/boost_labels/rehead_development/affectlens_reheaded_PublicTest.npz"
+    },
+    {
+      "name": "vggm",
+      "file": "/workspace/work/boost_strategy/oxford_vggm_PublicTest.npz"
+    }
+  ],
+  "selection_alternatives": [
+    {
+      "accuracy": 0.7522986904430203,
+      "correct": 2700,
+      "samples": 3589,
+      "macro_f1": 0.7395956874150859,
+      "clean_accuracy": 0.7343608340888486,
+      "clean_samples": 3309,
+      "nll": 0.7637577058443347,
+      "method": "equal"
+    }
+  ],
+  "policy_fitted_before_loading_private_labels": true
+}

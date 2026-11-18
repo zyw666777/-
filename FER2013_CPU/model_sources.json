@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "class_order": ["angry", "disgust", "fear", "happy", "sad", "surprise", "neutral"],
+  "models": {
+    "affectlens": {
+      "checkpoint": "affectlens.pt",
+      "checkpoint_url": "https://github.com/ma-jiyu/AffectLens/releases/download/v0.2.0/affectlens-resnet18-balanced-s42.pt",
+      "checkpoint_sha256": "0b80fe94c235c08fbdcf63caf175cb7fb581b4e40631cea4912fc504e30c1e16",
+      "source_url": "https://github.com/ma-jiyu/AffectLens/tree/v0.2.0",
+      "source_archive_url": "https://codeload.github.com/ma-jiyu/AffectLens/zip/refs/tags/v0.2.0",
+      "source_archive_sha256": "1ada2cf777e445228955c30af3eb3e62688263780ce8d292815ddd99032c444c",
+      "training_split": "Original FER2013 Training, plus 0.15 interpolation toward seven-class FER+ votes on training rows only, and ImageNet initialization",
+      "model_selection_split": "FER2013 PublicTest, macro-F1 early stopping; optional logit temperature calibration on PublicTest",
+      "publisher_reporting_split": "FER2013 PrivateTest with original labels",
+      "split_evidence": ["src/affectlens/data.py SPLIT_NAMES", "src/affectlens/cli.py train_main and evaluate_main", "src/affectlens/trainer.py fit"],
+      "transform": "48x48 grayscale cropped face, CLAHE clipLimit 2.0 tileGridSize 4x4, OpenCV cubic resize to 96x96, scale to [0,1], subtract 0.449 and divide by 0.226. Native and horizontally reflected views run through the same pipeline; cache logits are their arithmetic mean.",
+      "checkpoint_temperature": 1.2913227081298828,
+      "cache_temperature_applied": false,
+      "license": "Model weights CC BY-NC 4.0 for non-commercial research/education/demo, subject to underlying FER2013/FER+ terms. Source MIT.",
+      "license_url": "https://github.com/ma-jiyu/AffectLens/blob/v0.2.0/WEIGHTS_LICENSE.md",
+      "public_cache": "affectlens_PublicTest.npz",
+      "private_prediction_cache": "affectlens_PrivateTest.npz"
+    },
+    "oxford_alexnet": {
+      "checkpoint": "oxford_alexnet.pth",
+      "checkpoint_url": "https://www.robots.ox.ac.uk/~albanie/models/pytorch-mcn/alexnet_face_fer_bn_dag.pth",
+      "checkpoint_sha256": "9a49938f79a03993375e5241618fa2fb5f4e320ec2316ce035882c98117ec671",
+      "source_url": "https://www.robots.ox.ac.uk/~albanie/models/pytorch-mcn/alexnet_face_fer_bn_dag.py",
+      "release_page": "https://www.robots.ox.ac.uk/~albanie/pytorch-models.html",
+      "benchmark_source_url": "https://github.com/albanie/pytorch-benchmarks/tree/081e82eb43439ce2821622a6e3d627877caed67a",
+      "paper_url": "https://arxiv.org/abs/1610.02255",
+      "training_split": "FER2013 Training and VGG-Faces pretraining, as documented in the publisher checkpoint table",
+      "model_selection_split": "Publisher benchmark defines PublicTest as validation. Historical checkpoint-selection procedure has not been independently established.",
+      "publisher_reporting_split": "PublicTest validation and PrivateTest test with original FER2013 labels",
+      "split_evidence": ["Publisher table Fer2013 Train", "fer2013/fer_loader.py Fer2013Dataset.prepare_data", "run_fer_benchmarks.py native FER2013 mode"],
+      "transform": "48x48 grayscale cropped face, PIL bilinear resize to 227x227, replicate grayscale into three RGB channels, preserve [0,255] scale and subtract [131.09375, 103.88607788085938, 91.47599792480469]. Single original view. Conv and BatchNorm fused in eval; no change to the intended model function.",
+      "cache_temperature_applied": false,
+      "license": "Publisher makes checkpoints and architecture source publicly downloadable. No explicit redistribution license was located for this PyTorch checkpoint. Reference downloads rather than bundling weights.",
+      "public_cache": "oxford_alexnet_PublicTest.npz",
+      "private_prediction_cache": "oxford_alexnet_PrivateTest.npz"
+    }
+  },
+  "prediction_scope": "Both cache builders read images, source row IDs and exact pixel hashes only. They never open PrivateTest labels. The two architectures emit seven classes as ordered above."
+}

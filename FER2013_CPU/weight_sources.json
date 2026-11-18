@@ -1,0 +1,31 @@
+[
+  {
+    "filename": "tyom_fer2013_emotion_resnet18_v2.pt",
+    "url": "https://codeload.github.com/TyomPapiyan/fer2013-emotion-scanner/zip/dffd2628d872377b245f957202c06bbb7cb7e42d",
+    "zip_member": "fer2013_emotion_resnet18_v2.pt",
+    "sha256": "5b07a18e196bf8eaa5103babaeed36ace6cee136873ad915498f5dc3e57be364"
+  },
+  {
+    "filename": "affectlens.pt",
+    "url": "https://github.com/ma-jiyu/AffectLens/releases/download/v0.2.0/affectlens-resnet18-balanced-s42.pt",
+    "sha256": "0b80fe94c235c08fbdcf63caf175cb7fb581b4e40631cea4912fc504e30c1e16"
+  },
+  {
+    "filename": "oxford_alexnet.pth",
+    "url": "https://www.robots.ox.ac.uk/~albanie/models/pytorch-mcn/alexnet_face_fer_bn_dag.pth",
+    "sha256": "9a49938f79a03993375e5241618fa2fb5f4e320ec2316ce035882c98117ec671"
+  },
+  {
+    "filename": "densenet121_224_int8.onnx",
+    "sha256": "9bc101d874041e1c3885bfd20a2b02ee67c4ddec896be464999e8cfff826610f"
+  },
+  {
+    "filename": "oxford_vggm.pth",
+    "url": "https://www.robots.ox.ac.uk/~albanie/models/pytorch-mcn/vgg_m_face_bn_fer_dag.pth",
+    "sha256": "c02d3dbba3a2808b319665c6bcd33d4a7d564ae4e1cf0ccfd2ab8931513c198a"
+  },
+  {
+    "filename": "rmn_maskfree.pt",
+    "sha256": "caadd2b0a7a12fcc1fbb1942c8b74cb3603c2e6cf8b8af48812a0add673cf937"
+  }
+]
